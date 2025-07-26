@@ -23,7 +23,7 @@ AGENTS = [
     {
         "key": "copilot",
         "display": "Copilot",
-        "long_name": "GitHub Copilot",
+        "long_name": "GitHub Copilot coding agent",
         "color": "#2563eb",
         "info_url": "https://docs.github.com/en/copilot/using-github-copilot/coding-agent/using-copilot-to-work-on-an-issue",
         "total_query_url": "https://github.com/search?q=is:pr+head:copilot/&type=pullrequests",
