@@ -42,9 +42,9 @@ Q = {
     "is:pr+head:cursor/+is:merged": "cursor_merged",
     "is:pr+head:cursor/+-is:draft": "cursor_nondraft",
     # Devin metrics
-    "is:pr+author:devin-ai-integration[bot]": "devin_total",
-    "is:pr+author:devin-ai-integration[bot]+is:merged": "devin_merged",
-    "is:pr+author:devin-ai-integration[bot]+-is:draft": "devin_nondraft",
+    "is:pr+(author:devin-ai-integration[bot]+OR+head:devin+OR+head:devin/)": "devin_total",
+    "is:pr+(author:devin-ai-integration[bot]+OR+head:devin+OR+head:devin/)+is:merged": "devin_merged",
+    "is:pr+(author:devin-ai-integration[bot]+OR+head:devin+OR+head:devin/)+-is:draft": "devin_nondraft",
     # Codegen metrics
     "is:pr+author:codegen-sh[bot]": "codegen_total",
     "is:pr+author:codegen-sh[bot]+is:merged": "codegen_merged",
