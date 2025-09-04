@@ -41,13 +41,10 @@ Q = {
     "is:pr+head:cursor/": "cursor_total",
     "is:pr+head:cursor/+is:merged": "cursor_merged",
     "is:pr+head:cursor/+-is:draft": "cursor_nondraft",
-    # Devin metrics - using head:devin pattern only
-    "is:pr+head:devin": "devin_head_total",
-    "is:pr+head:devin+is:merged": "devin_head_merged",
-    "is:pr+head:devin+-is:draft": "devin_head_nondraft",
-    "is:pr+head:devin/": "devin_head_slash_total", 
-    "is:pr+head:devin/+is:merged": "devin_head_slash_merged",
-    "is:pr+head:devin/+-is:draft": "devin_head_slash_nondraft",
+    # Devin metrics - using head:devin/ pattern like other agents
+    "is:pr+head:devin/": "devin_total",
+    "is:pr+head:devin/+is:merged": "devin_merged",
+    "is:pr+head:devin/+-is:draft": "devin_nondraft",
     # Codegen metrics
     "is:pr+author:codegen-sh[bot]": "codegen_total",
     "is:pr+author:codegen-sh[bot]+is:merged": "codegen_merged",
@@ -105,15 +102,6 @@ def collect_data():
 
         # Rate limiting: wait between API calls
         time.sleep(API_DELAY_SECONDS)
-
-    cnt["devin_total"] = max(cnt["devin_head_total"], cnt["devin_head_slash_total"])
-    cnt["devin_merged"] = max(cnt["devin_head_merged"], cnt["devin_head_slash_merged"])
-    cnt["devin_nondraft"] = max(cnt["devin_head_nondraft"], cnt["devin_head_slash_nondraft"])
-    
-    print(f"Combined Devin counts:")
-    print(f"  devin_total: {cnt['devin_total']} (head:devin: {cnt['devin_head_total']}, head:devin/: {cnt['devin_head_slash_total']})")
-    print(f"  devin_merged: {cnt['devin_merged']} (head:devin: {cnt['devin_head_merged']}, head:devin/: {cnt['devin_head_slash_merged']})")
-    print(f"  devin_nondraft: {cnt['devin_nondraft']} (head:devin: {cnt['devin_head_nondraft']}, head:devin/: {cnt['devin_head_slash_nondraft']})")
 
     # Save data to CSV
     timestamp = dt.datetime.now(dt.UTC).strftime("%Y‑%m‑%d %H:%M:%S")
