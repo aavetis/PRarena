@@ -29,6 +29,7 @@ NONDRAFT_QUERIES = {
     "is:pr+head:cursor/+-is:draft": "cursor_nondraft",
     "is:pr+author:devin-ai-integration[bot]+-is:draft": "devin_nondraft",
     "is:pr+author:codegen-sh[bot]+-is:draft": "codegen_nondraft",
+    "is:pr+author:google-labs-jules[bot]+-is:draft": "jules_nondraft",
 }
 
 
@@ -114,7 +115,7 @@ def get_nondraft_counts_at_time(timestamp: dt.datetime) -> Dict[str, int]:
 
 def enforce_constraints(row: dict) -> dict:
     """Enforce logical constraints: merged <= nondraft <= total for each agent."""
-    agents = ["copilot", "codex", "cursor", "devin", "codegen"]
+    agents = ["copilot", "codex", "cursor", "devin", "codegen", "jules"]
 
     for agent in agents:
         total_key = f"{agent}_total"

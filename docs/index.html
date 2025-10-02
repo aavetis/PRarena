@@ -338,6 +338,63 @@
           </div>
         </div>
         
+          <div class="agent"
+               data-success-rate="96.59378356838421"
+               data-success-rate-ready="96.59378356838421"
+               data-success-rate-total="78.40026999662504"
+               data-total-prs="35556"
+               data-ready-prs="28859"
+               data-merged-prs="27876"
+               data-agent-name="Google Labs Jules">
+            <div class="agent-header">
+              <div class="rank" data-rank="6">#6</div>
+              <div class="agent-dot" style="background-color: #0ea5e9"></div>
+              <div class="agent-info">
+                <h3><a href="https://labs.google/" target="_blank">Google Labs Jules</a></h3>
+                <span class="agent-subtitle">
+                  <span class="pr-count">28,859</span>
+                  <span class="pr-type">ready</span> /
+                  <span class="pr-total">35,556</span>
+                  <span class="pr-total-label">all PRs</span>
+                </span>
+              </div>
+            </div>
+            <div class="metrics">
+              <div class="primary-metric">
+                <span class="metric-value">
+                  96.6%
+                </span>
+                <span class="metric-label">Success Rate</span>
+              </div>
+              <div class="secondary-metrics">
+                <div class="metric draft-metric">
+                  <a href="https://github.com/search?q=is:pr+author:google-labs-jules[bot]+is:draft&type=pullrequests" target="_blank">
+                    <span class="metric-count">6,697</span>
+                    <span>draft</span>
+                  </a>
+                </div>
+                <div class="metric">
+                  <a href="https://github.com/search?q=is:pr+author:google-labs-jules[bot]+-is:draft&type=pullrequests" target="_blank">
+                    <span class="metric-count">28,859</span>
+                    <span>ready</span>
+                  </a>
+                </div>
+                <div class="metric">
+                  <a href="https://github.com/search?q=is:pr+author:google-labs-jules[bot]+is:merged&type=pullrequests" target="_blank">
+                    <span class="metric-count">27,876</span>
+                    <span>merged</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          <div class="progress-bar">
+            <div
+              class="progress"
+              style="width: 96.59378356838421%; background-color: #0ea5e9"
+            ></div>
+          </div>
+        </div>
+        
       </section>
 
       <!-- Definitions section -->
@@ -429,6 +486,18 @@
                   >Codegen
                 </button>
                 
+                <button
+                  id="toggleJules"
+                  class="toggle-btn active"
+                  data-agent="jules"
+                >
+                  <span
+                    class="toggle-icon"
+                    style="background-color: #0ea5e9"
+                  ></span
+                  >Google Labs Jules
+                </button>
+                
               </div>
             </div>
             <div class="control-section">
@@ -466,7 +535,7 @@
       <!-- Simple Footer -->
       <footer class="footer">
         <p>
-          Updated October 02, 2025 18:03 UTC •
+          Updated October 02, 2025 20:52 UTC •
           <a href="https://github.com/aavetis/ai-pr-watcher" target="_blank">by aavetis</a>
         </p>
       </footer>
@@ -834,7 +903,7 @@
           const labelLower = dataset.label.toLowerCase();
 
           // Get the agent name from the dataset label
-          const agentMatch = labelLower.match(/(copilot|codex|cursor|devin|codegen)/);
+          const agentMatch = labelLower.match(/(copilot|codex|cursor|devin|codegen|jules)/);
           const agent = agentMatch ? agentMatch[1] : null;
 
           // Check if agent is currently enabled

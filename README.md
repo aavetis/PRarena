@@ -40,6 +40,10 @@ Explore the GitHub search queries used:
 - **Merged Codegen PRs**: [https://github.com/search?q=is:pr+author:codegen-sh[bot]+is:merged&type=pullrequests](https://github.com/search?q=is:pr+author:codegen-sh[bot]+is:merged&type=pullrequests)
   
 
+- **All Jules PRs**: [https://github.com/search?q=is:pr+author:google-labs-jules[bot]&type=pullrequests](https://github.com/search?q=is:pr+author:google-labs-jules[bot]&type=pullrequests)
+- **Merged Jules PRs**: [https://github.com/search?q=is:pr+author:google-labs-jules[bot]+is:merged&type=pullrequests](https://github.com/search?q=is:pr+author:google-labs-jules[bot]+is:merged&type=pullrequests)
+  
+
 ---
 
 ![chart](docs/chart.png)
@@ -53,3 +57,4 @@ Explore the GitHub search queries used:
 | Cursor | 100,169 | 94,224 | 94.07% |
 | Devin | 41,832 | 26,604 | 63.6% |
 | Codegen | 5,021 | 3,069 | 61.12% |
+| Jules | 28,859 | 27,876 | 96.59% |

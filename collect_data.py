@@ -49,11 +49,15 @@ Q = {
     "is:pr+author:codegen-sh[bot]": "codegen_total",
     "is:pr+author:codegen-sh[bot]+is:merged": "codegen_merged",
     "is:pr+author:codegen-sh[bot]+-is:draft": "codegen_nondraft",
+    # Jules metrics
+    "is:pr+author:google-labs-jules[bot]": "jules_total",
+    "is:pr+author:google-labs-jules[bot]+is:merged": "jules_merged",
+    "is:pr+author:google-labs-jules[bot]+-is:draft": "jules_nondraft",
 }
 
 
 def collect_data():
-    # Get data from GitHub API - 15 metrics total (3 per agent: total, merged, non-draft)
+    # Get data from GitHub API - 18 metrics total (3 per agent: total, merged, non-draft)
     cnt = {}
 
     # Get headers with authentication if available
@@ -117,11 +121,14 @@ def collect_data():
         cnt["devin_merged"],
         cnt["codegen_total"],
         cnt["codegen_merged"],
+        cnt["jules_total"],
+        cnt["jules_merged"],
         cnt["copilot_nondraft"],
         cnt["codex_nondraft"],
         cnt["cursor_nondraft"],
         cnt["devin_nondraft"],
         cnt["codegen_nondraft"],
+        cnt["jules_nondraft"],
     ]
 
     csv_file = Path("data.csv")
@@ -142,11 +149,14 @@ def collect_data():
                     "devin_merged",
                     "codegen_total",
                     "codegen_merged",
+                    "jules_total",
+                    "jules_merged",
                     "copilot_nondraft",
                     "codex_nondraft",
                     "cursor_nondraft",
                     "devin_nondraft",
                     "codegen_nondraft",
+                    "jules_nondraft",
                 ]
             )
         writer.writerow(row)
