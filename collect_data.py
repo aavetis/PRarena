@@ -49,6 +49,10 @@ Q = {
     "is:pr+author:codegen-sh[bot]": "codegen_total",
     "is:pr+author:codegen-sh[bot]+is:merged": "codegen_merged",
     "is:pr+author:codegen-sh[bot]+-is:draft": "codegen_nondraft",
+    # Jules metrics
+    "is:pr author:google-labs-jules[bot]": "jules_total",
+    "is:pr+author:google-labs-jules[bot]+is:merged": "jules_merged",
+    "is:pr+author:google-labs-jules[bot]+-is:draft": "jules_nondraft",
 }
 
 
