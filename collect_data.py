@@ -66,7 +66,7 @@ def collect_data():
     # Collect all metrics in one loop
     for query, key in Q.items():
         print(f"Collecting {key}...")
-        
+
         # Simple retry logic - 3 attempts with pause
         max_attempts = 3
         for attempt in range(max_attempts):
@@ -99,9 +99,7 @@ def collect_data():
                 if attempt == max_attempts - 1:  # Last attempt - fail the job
                     raise e
                 else:
-                    print(
-                        f"    Attempt {attempt + 1} failed ({e}), retrying in 10s..."
-                    )
+                    print(f"    Attempt {attempt + 1} failed ({e}), retrying in 10s...")
                     time.sleep(10)  # Wait 10 seconds before retry
 
         # Rate limiting: wait between API calls
@@ -121,13 +119,13 @@ def collect_data():
         cnt["devin_merged"],
         cnt["codegen_total"],
         cnt["codegen_merged"],
-        cnt["jules_total"],
-        cnt["jules_merged"],
         cnt["copilot_nondraft"],
         cnt["codex_nondraft"],
         cnt["cursor_nondraft"],
         cnt["devin_nondraft"],
         cnt["codegen_nondraft"],
+        cnt["jules_total"],
+        cnt["jules_merged"],
         cnt["jules_nondraft"],
     ]
 
@@ -149,13 +147,13 @@ def collect_data():
                     "devin_merged",
                     "codegen_total",
                     "codegen_merged",
-                    "jules_total",
-                    "jules_merged",
                     "copilot_nondraft",
                     "codex_nondraft",
                     "cursor_nondraft",
                     "devin_nondraft",
                     "codegen_nondraft",
+                    "jules_total",
+                    "jules_merged",
                     "jules_nondraft",
                 ]
             )
