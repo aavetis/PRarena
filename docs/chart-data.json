@@ -434,6 +434,91 @@
       "order": 1,
       "hidden": true,
       "rateType": "total"
+    },
+    {
+      "label": "Jules Total",
+      "type": "bar",
+      "data": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        35556
+      ],
+      "backgroundColor": "#bae6fd",
+      "borderColor": "#bae6fd",
+      "borderWidth": 1,
+      "yAxisID": "y",
+      "order": 2
+    },
+    {
+      "label": "Jules Merged",
+      "type": "bar",
+      "data": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        27876
+      ],
+      "backgroundColor": "#0ea5e9",
+      "borderColor": "#0ea5e9",
+      "borderWidth": 1,
+      "yAxisID": "y",
+      "order": 2
+    },
+    {
+      "label": "Jules Success % (Ready)",
+      "type": "line",
+      "data": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        96.59378356838421
+      ],
+      "borderColor": "#0369a1",
+      "backgroundColor": "rgba(255, 255, 255, 0.8)",
+      "borderWidth": 3,
+      "pointRadius": 3,
+      "pointHoverRadius": 5,
+      "fill": false,
+      "yAxisID": "y1",
+      "order": 1,
+      "rateType": "ready"
+    },
+    {
+      "label": "Jules Success % (All)",
+      "type": "line",
+      "data": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        78.40026999662504
+      ],
+      "borderColor": "#0369a1",
+      "backgroundColor": "rgba(255, 255, 255, 0.8)",
+      "borderWidth": 3,
+      "pointRadius": 3,
+      "pointHoverRadius": 5,
+      "fill": false,
+      "yAxisID": "y1",
+      "order": 1,
+      "hidden": true,
+      "rateType": "total"
     }
   ]
 }
