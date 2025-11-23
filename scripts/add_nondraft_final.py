@@ -27,7 +27,7 @@ NONDRAFT_QUERIES = {
     "is:pr+head:copilot/+-is:draft": "copilot_nondraft",
     "is:pr+head:codex/+-is:draft": "codex_nondraft",
     "is:pr+head:cursor/+-is:draft": "cursor_nondraft",
-    "is:pr+head:devin/+-is:draft": "devin_nondraft",
+    "is:pr+author:devin-ai-integration[bot]+-is:draft": "devin_nondraft",
     "is:pr+author:codegen-sh[bot]+-is:draft": "codegen_nondraft",
     "is:pr+author:google-labs-jules[bot]+-is:draft": "jules_nondraft",
 }

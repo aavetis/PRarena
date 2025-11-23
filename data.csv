@@ -1,4 +1,4 @@
-timestamp,copilot_total,copilot_merged,codex_total,codex_merged,cursor_total,cursor_merged,devin_total,devin_merged,codegen_total,codegen_merged,copilot_nondraft,codex_nondraft,cursor_nondraft,devin_nondraft,codegen_nondraft,jules_total,jules_merged,jules_nondraft,windsurf_total,windsurf_merged,windsurf_nondraft,openhands_total,openhands_merged,openhands_nondraft,tembo_total,tembo_merged,tembo_nondraft,factory_total,factory_merged,factory_nondraft
+timestamp,copilot_total,copilot_merged,codex_total,codex_merged,cursor_total,cursor_merged,devin_total,devin_merged,codegen_total,codegen_merged,copilot_nondraft,codex_nondraft,cursor_nondraft,devin_nondraft,codegen_nondraft,jules_total,jules_merged,jules_nondraft,windsurf_total,windsurf_merged,windsurf_nondraft,openhands_total,openhands_merged,openhands_nondraft,tembo_total,tembo_merged,tembo_nondraft,factory_total,factory_merged,factory_nondraft,cosine_total,cosine_merged,cosine_nondraft
 2025‑05‑26 14:21:34,8729,1594,54211,44230,0,0,0,0,0,0,2099,51548,0,0,0,0,0,0
 2025‑05‑26 14:41:16,8772,1600,54285,44297,0,0,0,0,0,0,2111,51622,0,0,0,0,0,0
 2025‑05‑26 14:44:33,8773,1604,54300,44309,0,0,0,0,0,0,2112,51634,0,0,0,0,0,0

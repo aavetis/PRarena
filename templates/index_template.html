@@ -558,7 +558,7 @@
           const labelLower = dataset.label.toLowerCase();
 
           // Get the agent name from the dataset label
-          const agentMatch = labelLower.match(/(copilot|codex|cursor|devin|codegen|jules|windsurf|openhands|tembo|factory)/);
+          const agentMatch = labelLower.match(/(copilot|codex|cursor|devin|codegen|jules|windsurf|openhands|tembo|factory|cosine)/);
           const agent = agentMatch ? agentMatch[1] : null;
 
           // Check if agent is currently enabled

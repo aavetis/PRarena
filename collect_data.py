@@ -41,10 +41,10 @@ Q = {
     "is:pr+head:cursor/": "cursor_total",
     "is:pr+head:cursor/+is:merged": "cursor_merged",
     "is:pr+head:cursor/+-is:draft": "cursor_nondraft",
-    # Devin metrics - using head:devin/ pattern like other agents
-    "is:pr+head:devin/": "devin_total",
-    "is:pr+head:devin/+is:merged": "devin_merged",
-    "is:pr+head:devin/+-is:draft": "devin_nondraft",
+    # Devin metrics
+    "is:pr+author:devin-ai-integration[bot]": "devin_total",
+    "is:pr+author:devin-ai-integration[bot]+is:merged": "devin_merged",
+    "is:pr+author:devin-ai-integration[bot]+-is:draft": "devin_nondraft",
     # Codegen metrics
     "is:pr+author:codegen-sh[bot]": "codegen_total",
     "is:pr+author:codegen-sh[bot]+is:merged": "codegen_merged",
@@ -69,6 +69,10 @@ Q = {
     "is:pr+head:factory/": "factory_total",
     "is:pr+head:factory/+is:merged": "factory_merged",
     "is:pr+head:factory/+-is:draft": "factory_nondraft",
+    # Cosine metrics
+    "is:pr+head:cosine/": "cosine_total",
+    "is:pr+head:cosine/+is:merged": "cosine_merged",
+    "is:pr+head:cosine/+-is:draft": "cosine_nondraft",
 }
 
 
@@ -155,6 +159,9 @@ def collect_data():
         cnt["factory_total"],
         cnt["factory_merged"],
         cnt["factory_nondraft"],
+        cnt["cosine_total"],
+        cnt["cosine_merged"],
+        cnt["cosine_nondraft"],
     ]
 
     csv_file = Path("data.csv")
@@ -195,6 +202,9 @@ def collect_data():
                     "factory_total",
                     "factory_merged",
                     "factory_nondraft",
+                    "cosine_total",
+                    "cosine_merged",
+                    "cosine_nondraft",
                 ]
             )
         writer.writerow(row)
