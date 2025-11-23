@@ -53,6 +53,22 @@ Q = {
     "is:pr+author:google-labs-jules[bot]": "jules_total",
     "is:pr+author:google-labs-jules[bot]+is:merged": "jules_merged",
     "is:pr+author:google-labs-jules[bot]+-is:draft": "jules_nondraft",
+    # Windsurf metrics
+    "is:pr+head:windsurf/": "windsurf_total",
+    "is:pr+head:windsurf/+is:merged": "windsurf_merged",
+    "is:pr+head:windsurf/+-is:draft": "windsurf_nondraft",
+    # OpenHands metrics
+    "is:pr+head:openhands/": "openhands_total",
+    "is:pr+head:openhands/+is:merged": "openhands_merged",
+    "is:pr+head:openhands/+-is:draft": "openhands_nondraft",
+    # Tembo metrics
+    "is:pr+author:tembo[bot]": "tembo_total",
+    "is:pr+author:tembo[bot]+is:merged": "tembo_merged",
+    "is:pr+author:tembo[bot]+-is:draft": "tembo_nondraft",
+    # Factory metrics
+    "is:pr+head:factory/": "factory_total",
+    "is:pr+head:factory/+is:merged": "factory_merged",
+    "is:pr+head:factory/+-is:draft": "factory_nondraft",
 }
 
 
@@ -127,6 +143,18 @@ def collect_data():
         cnt["jules_total"],
         cnt["jules_merged"],
         cnt["jules_nondraft"],
+        cnt["windsurf_total"],
+        cnt["windsurf_merged"],
+        cnt["windsurf_nondraft"],
+        cnt["openhands_total"],
+        cnt["openhands_merged"],
+        cnt["openhands_nondraft"],
+        cnt["tembo_total"],
+        cnt["tembo_merged"],
+        cnt["tembo_nondraft"],
+        cnt["factory_total"],
+        cnt["factory_merged"],
+        cnt["factory_nondraft"],
     ]
 
     csv_file = Path("data.csv")
@@ -155,6 +183,18 @@ def collect_data():
                     "jules_total",
                     "jules_merged",
                     "jules_nondraft",
+                    "windsurf_total",
+                    "windsurf_merged",
+                    "windsurf_nondraft",
+                    "openhands_total",
+                    "openhands_merged",
+                    "openhands_nondraft",
+                    "tembo_total",
+                    "tembo_merged",
+                    "tembo_nondraft",
+                    "factory_total",
+                    "factory_merged",
+                    "factory_nondraft",
                 ]
             )
         writer.writerow(row)

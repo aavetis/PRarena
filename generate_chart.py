@@ -86,6 +86,50 @@ AGENTS = [
         "ready_query_url": "https://github.com/search?q=is:pr+author:google-labs-jules[bot]+-is:draft&type=pullrequests",
         "draft_query_url": "https://github.com/search?q=is:pr+author:google-labs-jules[bot]+is:draft&type=pullrequests",
     },
+    {
+        "key": "windsurf",
+        "display": "Windsurf",
+        "long_name": "Windsurf",
+        "color": "#06b6d4",
+        "info_url": "https://windsurf.com",
+        "total_query_url": "https://github.com/search?q=is:pr+head:windsurf/&type=pullrequests",
+        "merged_query_url": "https://github.com/search?q=is:pr+head:windsurf/+is:merged&type=pullrequests",
+        "ready_query_url": "https://github.com/search?q=is:pr+head:windsurf/+-is:draft&type=pullrequests",
+        "draft_query_url": "https://github.com/search?q=is:pr+head:windsurf/+is:draft&type=pullrequests",
+    },
+    {
+        "key": "openhands",
+        "display": "OpenHands",
+        "long_name": "OpenHands",
+        "color": "#f59e0b",
+        "info_url": "https://openhands.dev/",
+        "total_query_url": "https://github.com/search?q=is:pr+head:openhands/&type=pullrequests",
+        "merged_query_url": "https://github.com/search?q=is:pr+head:openhands/+is:merged&type=pullrequests",
+        "ready_query_url": "https://github.com/search?q=is:pr+head:openhands/+-is:draft&type=pullrequests",
+        "draft_query_url": "https://github.com/search?q=is:pr+head:openhands/+is:draft&type=pullrequests",
+    },
+    {
+        "key": "tembo",
+        "display": "Tembo",
+        "long_name": "Tembo",
+        "color": "#ec4899",
+        "info_url": "https://www.tembo.io/",
+        "total_query_url": "https://github.com/search?q=is:pr+author:tembo[bot]&type=pullrequests",
+        "merged_query_url": "https://github.com/search?q=is:pr+author:tembo[bot]+is:merged&type=pullrequests",
+        "ready_query_url": "https://github.com/search?q=is:pr+author:tembo[bot]+-is:draft&type=pullrequests",
+        "draft_query_url": "https://github.com/search?q=is:pr+author:tembo[bot]+is:draft&type=pullrequests",
+    },
+    {
+        "key": "factory",
+        "display": "Factory",
+        "long_name": "Factory",
+        "color": "#8b5cf6",
+        "info_url": "https://www.factory.ai/",
+        "total_query_url": "https://github.com/search?q=is:pr+head:factory/&type=pullrequests",
+        "merged_query_url": "https://github.com/search?q=is:pr+head:factory/+is:merged&type=pullrequests",
+        "ready_query_url": "https://github.com/search?q=is:pr+head:factory/+-is:draft&type=pullrequests",
+        "draft_query_url": "https://github.com/search?q=is:pr+head:factory/+is:draft&type=pullrequests",
+    },
 ]
 
 
@@ -198,6 +242,38 @@ def generate_chart(csv_file=None):
         ),
         axis=1,
     )
+    df["windsurf_percentage"] = df.apply(
+        lambda row: (
+            (row["windsurf_merged"] / row["windsurf_nondraft"] * 100)
+            if row["windsurf_nondraft"] > 0
+            else 0
+        ),
+        axis=1,
+    )
+    df["openhands_percentage"] = df.apply(
+        lambda row: (
+            (row["openhands_merged"] / row["openhands_nondraft"] * 100)
+            if row["openhands_nondraft"] > 0
+            else 0
+        ),
+        axis=1,
+    )
+    df["tembo_percentage"] = df.apply(
+        lambda row: (
+            (row["tembo_merged"] / row["tembo_nondraft"] * 100)
+            if row["tembo_nondraft"] > 0
+            else 0
+        ),
+        axis=1,
+    )
+    df["factory_percentage"] = df.apply(
+        lambda row: (
+            (row["factory_merged"] / row["factory_nondraft"] * 100)
+            if row["factory_nondraft"] > 0
+            else 0
+        ),
+        axis=1,
+    )
 
     # Total rate (merged/total) - for alternative view
     df["copilot_total_percentage"] = df.apply(
@@ -244,6 +320,38 @@ def generate_chart(csv_file=None):
         lambda row: (
             (row["jules_merged"] / row["jules_total"] * 100)
             if row["jules_total"] > 0
+            else 0
+        ),
+        axis=1,
+    )
+    df["windsurf_total_percentage"] = df.apply(
+        lambda row: (
+            (row["windsurf_merged"] / row["windsurf_total"] * 100)
+            if row["windsurf_total"] > 0
+            else 0
+        ),
+        axis=1,
+    )
+    df["openhands_total_percentage"] = df.apply(
+        lambda row: (
+            (row["openhands_merged"] / row["openhands_total"] * 100)
+            if row["openhands_total"] > 0
+            else 0
+        ),
+        axis=1,
+    )
+    df["tembo_total_percentage"] = df.apply(
+        lambda row: (
+            (row["tembo_merged"] / row["tembo_total"] * 100)
+            if row["tembo_total"] > 0
+            else 0
+        ),
+        axis=1,
+    )
+    df["factory_total_percentage"] = df.apply(
+        lambda row: (
+            (row["factory_merged"] / row["factory_total"] * 100)
+            if row["factory_total"] > 0
             else 0
         ),
         axis=1,
@@ -649,10 +757,14 @@ def export_chart_data_json(df):
         "devin": {"total": "#86efac", "merged": "#059669", "line": "#047857"},
         "codegen": {"total": "#fed7aa", "merged": "#d97706", "line": "#b45309"},
         "jules": {"total": "#bae6fd", "merged": "#0ea5e9", "line": "#0369a1"},
+        "windsurf": {"total": "#a5f3fc", "merged": "#06b6d4", "line": "#0891b2"},
+        "openhands": {"total": "#fde68a", "merged": "#f59e0b", "line": "#d97706"},
+        "tembo": {"total": "#fbcfe8", "merged": "#ec4899", "line": "#db2777"},
+        "factory": {"total": "#ddd6fe", "merged": "#8b5cf6", "line": "#7c3aed"},
     }
 
     # Add bar datasets for totals and merged PRs
-    for agent in ["copilot", "codex", "cursor", "devin", "codegen", "jules"]:
+    for agent in ["copilot", "codex", "cursor", "devin", "codegen", "jules", "windsurf", "openhands", "tembo", "factory"]:
         # Process data to replace leading zeros with None (null in JSON)
         total_data = df[f"{agent}_total"].tolist()
         merged_data = df[f"{agent}_merged"].tolist()
