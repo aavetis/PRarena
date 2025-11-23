@@ -41,10 +41,10 @@ Q = {
     "is:pr+head:cursor/": "cursor_total",
     "is:pr+head:cursor/+is:merged": "cursor_merged",
     "is:pr+head:cursor/+-is:draft": "cursor_nondraft",
-    # Devin metrics
-    "is:pr+author:devin-ai-integration[bot]": "devin_total",
-    "is:pr+author:devin-ai-integration[bot]+is:merged": "devin_merged",
-    "is:pr+author:devin-ai-integration[bot]+-is:draft": "devin_nondraft",
+    # Devin metrics - using head:devin/ pattern like other agents
+    "is:pr+head:devin/": "devin_total",
+    "is:pr+head:devin/+is:merged": "devin_merged",
+    "is:pr+head:devin/+-is:draft": "devin_nondraft",
     # Codegen metrics
     "is:pr+author:codegen-sh[bot]": "codegen_total",
     "is:pr+author:codegen-sh[bot]+is:merged": "codegen_merged",
