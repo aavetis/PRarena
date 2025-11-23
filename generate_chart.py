@@ -98,15 +98,26 @@ AGENTS = [
         "draft_query_url": "https://github.com/search?q=is:pr+head:windsurf/+is:draft&type=pullrequests",
     },
     {
-        "key": "openhands",
-        "display": "OpenHands",
-        "long_name": "OpenHands",
+        "key": "openhands_allhands",
+        "display": "OpenHands (AllHands)",
+        "long_name": "OpenHands – AllHands demo instance",
         "color": "#f59e0b",
         "info_url": "https://openhands.dev/",
-        "total_query_url": "https://github.com/search?q=is:pr+head:openhands/&type=pullrequests",
-        "merged_query_url": "https://github.com/search?q=is:pr+head:openhands/+is:merged&type=pullrequests",
-        "ready_query_url": "https://github.com/search?q=is:pr+head:openhands/+-is:draft&type=pullrequests",
-        "draft_query_url": "https://github.com/search?q=is:pr+head:openhands/+is:draft&type=pullrequests",
+        "total_query_url": "https://github.com/search?q=is:pr+author:openhands-agent&type=pullrequests",
+        "merged_query_url": "https://github.com/search?q=is:pr+author:openhands-agent+is:merged&type=pullrequests",
+        "ready_query_url": "https://github.com/search?q=is:pr+author:openhands-agent+-is:draft&type=pullrequests",
+        "draft_query_url": "https://github.com/search?q=is:pr+author:openhands-agent+is:draft&type=pullrequests",
+    },
+    {
+        "key": "openhands_selfhosted",
+        "display": "OpenHands (self-hosted)",
+        "long_name": "OpenHands – self-hosted (default config)",
+        "color": "#fbbf24",
+        "info_url": "https://openhands.dev/",
+        "total_query_url": "https://github.com/search?q=is:pr+head:openhands/+-author:openhands-agent&type=pullrequests",
+        "merged_query_url": "https://github.com/search?q=is:pr+head:openhands/+-author:openhands-agent+is:merged&type=pullrequests",
+        "ready_query_url": "https://github.com/search?q=is:pr+head:openhands/+-author:openhands-agent+-is:draft&type=pullrequests",
+        "draft_query_url": "https://github.com/search?q=is:pr+head:openhands/+-author:openhands-agent+is:draft&type=pullrequests",
     },
     {
         "key": "tembo",
@@ -261,10 +272,18 @@ def generate_chart(csv_file=None):
         ),
         axis=1,
     )
-    df["openhands_percentage"] = df.apply(
+    df["openhands_allhands_percentage"] = df.apply(
         lambda row: (
-            (row["openhands_merged"] / row["openhands_nondraft"] * 100)
-            if row["openhands_nondraft"] > 0
+            (row.get("openhands_allhands_merged", 0) / row.get("openhands_allhands_nondraft", 1) * 100)
+            if row.get("openhands_allhands_nondraft", 0) > 0
+            else 0
+        ),
+        axis=1,
+    )
+    df["openhands_selfhosted_percentage"] = df.apply(
+        lambda row: (
+            (row.get("openhands_selfhosted_merged", 0) / row.get("openhands_selfhosted_nondraft", 1) * 100)
+            if row.get("openhands_selfhosted_nondraft", 0) > 0
             else 0
         ),
         axis=1,
@@ -351,10 +370,18 @@ def generate_chart(csv_file=None):
         ),
         axis=1,
     )
-    df["openhands_total_percentage"] = df.apply(
+    df["openhands_allhands_total_percentage"] = df.apply(
         lambda row: (
-            (row["openhands_merged"] / row["openhands_total"] * 100)
-            if row["openhands_total"] > 0
+            (row.get("openhands_allhands_merged", 0) / row.get("openhands_allhands_total", 1) * 100)
+            if row.get("openhands_allhands_total", 0) > 0
+            else 0
+        ),
+        axis=1,
+    )
+    df["openhands_selfhosted_total_percentage"] = df.apply(
+        lambda row: (
+            (row.get("openhands_selfhosted_merged", 0) / row.get("openhands_selfhosted_total", 1) * 100)
+            if row.get("openhands_selfhosted_total", 0) > 0
             else 0
         ),
         axis=1,
@@ -785,14 +812,15 @@ def export_chart_data_json(df):
         "codegen": {"total": "#fed7aa", "merged": "#d97706", "line": "#b45309"},
         "jules": {"total": "#bae6fd", "merged": "#0ea5e9", "line": "#0369a1"},
         "windsurf": {"total": "#a5f3fc", "merged": "#06b6d4", "line": "#0891b2"},
-        "openhands": {"total": "#fde68a", "merged": "#f59e0b", "line": "#d97706"},
+        "openhands_allhands": {"total": "#fde68a", "merged": "#f59e0b", "line": "#d97706"},
+        "openhands_selfhosted": {"total": "#fef3c7", "merged": "#fbbf24", "line": "#f59e0b"},
         "tembo": {"total": "#fbcfe8", "merged": "#ec4899", "line": "#db2777"},
         "factory": {"total": "#ddd6fe", "merged": "#8b5cf6", "line": "#7c3aed"},
         "cosine": {"total": "#bae6fd", "merged": "#0ea5e9", "line": "#0284c7"},
     }
 
     # Add bar datasets for totals and merged PRs
-    for agent in ["copilot", "codex", "cursor", "devin", "codegen", "jules", "windsurf", "openhands", "tembo", "factory", "cosine"]:
+    for agent in ["copilot", "codex", "cursor", "devin", "codegen", "jules", "windsurf", "openhands_allhands", "openhands_selfhosted", "tembo", "factory", "cosine"]:
         # Process data to replace leading zeros with None (null in JSON)
         total_data = df.get(f"{agent}_total", pd.Series([0]*len(df))).tolist()
         merged_data = df.get(f"{agent}_merged", pd.Series([0]*len(df))).tolist()
