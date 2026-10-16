@@ -53,6 +53,30 @@ Q = {
     "is:pr+author:google-labs-jules[bot]": "jules_total",
     "is:pr+author:google-labs-jules[bot]+is:merged": "jules_merged",
     "is:pr+author:google-labs-jules[bot]+-is:draft": "jules_nondraft",
+    # Windsurf metrics
+    "is:pr+head:windsurf/": "windsurf_total",
+    "is:pr+head:windsurf/+is:merged": "windsurf_merged",
+    "is:pr+head:windsurf/+-is:draft": "windsurf_nondraft",
+    # OpenHands (AllHands demo) metrics
+    "is:pr+author:openhands-agent": "openhands_allhands_total",
+    "is:pr+author:openhands-agent+is:merged": "openhands_allhands_merged",
+    "is:pr+author:openhands-agent+-is:draft": "openhands_allhands_nondraft",
+    # OpenHands (self-hosted) metrics
+    "is:pr+head:openhands/+-author:openhands-agent": "openhands_selfhosted_total",
+    "is:pr+head:openhands/+-author:openhands-agent+is:merged": "openhands_selfhosted_merged",
+    "is:pr+head:openhands/+-author:openhands-agent+-is:draft": "openhands_selfhosted_nondraft",
+    # Tembo metrics
+    "is:pr+author:tembo[bot]": "tembo_total",
+    "is:pr+author:tembo[bot]+is:merged": "tembo_merged",
+    "is:pr+author:tembo[bot]+-is:draft": "tembo_nondraft",
+    # Factory metrics
+    "is:pr+head:factory/": "factory_total",
+    "is:pr+head:factory/+is:merged": "factory_merged",
+    "is:pr+head:factory/+-is:draft": "factory_nondraft",
+    # Cosine metrics
+    "is:pr+head:cosine/": "cosine_total",
+    "is:pr+head:cosine/+is:merged": "cosine_merged",
+    "is:pr+head:cosine/+-is:draft": "cosine_nondraft",
 }
 
 
@@ -127,6 +151,24 @@ def collect_data():
         cnt["jules_total"],
         cnt["jules_merged"],
         cnt["jules_nondraft"],
+        cnt["windsurf_total"],
+        cnt["windsurf_merged"],
+        cnt["windsurf_nondraft"],
+        cnt["openhands_allhands_total"],
+        cnt["openhands_allhands_merged"],
+        cnt["openhands_allhands_nondraft"],
+        cnt["openhands_selfhosted_total"],
+        cnt["openhands_selfhosted_merged"],
+        cnt["openhands_selfhosted_nondraft"],
+        cnt["tembo_total"],
+        cnt["tembo_merged"],
+        cnt["tembo_nondraft"],
+        cnt["factory_total"],
+        cnt["factory_merged"],
+        cnt["factory_nondraft"],
+        cnt["cosine_total"],
+        cnt["cosine_merged"],
+        cnt["cosine_nondraft"],
     ]
 
     csv_file = Path("data.csv")
@@ -155,6 +197,24 @@ def collect_data():
                     "jules_total",
                     "jules_merged",
                     "jules_nondraft",
+                    "windsurf_total",
+                    "windsurf_merged",
+                    "windsurf_nondraft",
+                    "openhands_allhands_total",
+                    "openhands_allhands_merged",
+                    "openhands_allhands_nondraft",
+                    "openhands_selfhosted_total",
+                    "openhands_selfhosted_merged",
+                    "openhands_selfhosted_nondraft",
+                    "tembo_total",
+                    "tembo_merged",
+                    "tembo_nondraft",
+                    "factory_total",
+                    "factory_merged",
+                    "factory_nondraft",
+                    "cosine_total",
+                    "cosine_merged",
+                    "cosine_nondraft",
                 ]
             )
         writer.writerow(row)
